@@ -3,5 +3,5 @@
 html tehtävän screenshot:
 ![screenshot](viikko1html.png)
 
-Linkki esimerkki:
+Linkki:
 [linkki](https://users.metropolia.fi/~patrikhy/wskTehtavat/Viikko1/)
