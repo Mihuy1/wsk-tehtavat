@@ -1,0 +1,30 @@
+/* External CSS file */
+/* Remove default font */
+.container {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    margin: 10px;
+    background-color: whitesmoke;
+}
+
+a {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+img {
+    border: 5px solid #555;
+    border-radius: 10px; /* Adjust to desired roundedness */
+}
+
+table tr:nth-child(even) {
+    background-color: #e0e0e0; /* Adjust as needed */
+}
+
+ul {
+    list-style-type: none;
+}
