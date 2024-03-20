@@ -1,6 +1,5 @@
-/* External CSS file */
-/* Remove default font */
-.container {
+body {
+    font-family: Helvetica, Arial, sans-serif;
     font-family: Arial, sans-serif;
     padding: 10px;
     margin: 10px;
@@ -18,11 +17,11 @@ a:hover {
 
 img {
     border: 5px solid #555;
-    border-radius: 10px; /* Adjust to desired roundedness */
+    border-radius: 10px;
 }
 
 table tr:nth-child(even) {
-    background-color: #e0e0e0; /* Adjust as needed */
+    background-color: #e0e0e0;
 }
 
 ul {
