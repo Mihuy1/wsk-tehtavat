@@ -1,9 +1,11 @@
 # Web-sovelluskehitys
 
-validaattori kuva:
+## Week 1
+
+validator screenshot:
 ![screenshot](/viikko1/validator.png)
 
-html sivun kuva:
+html content screenshot:
 ![screenshot](/viikko1/viikko1html.png)
 
-[linkki users.metropoliaan](https://users.metropolia.fi/~patrikhy/wskTehtavat/Viikko1/)
+[users.metropolia link](https://users.metropolia.fi/~patrikhy/wskTehtavat/Viikko1/)
