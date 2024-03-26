@@ -771,3 +771,62 @@ const restaurants = [
 ];
 
 // your code here
+console.log(restaurants[0].location.coordinates[0]);
+console.log(restaurants[0].location.coordinates[1]);
+
+function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          resolve({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          });
+        },
+        error => {
+          reject(error);
+        }
+      );
+    } else {
+      reject(new Error('Geolocation is not supported by this browser.'));
+    }
+  });
+}
+
+function calculateEuclideanDistance(lat1, lon1, lat2, lon2) {
+  return Math.sqrt(Math.pow(lat1 - lat2, 2) + Math.pow(lon1 - lon2, 2));
+}
+
+async function displayRestaurants() {
+  try {
+    const userLocation = await getUserLocation();
+    console.log(userLocation);
+
+    for (const restaurant of restaurants) {
+      const [lon, lat] = restaurant.location.coordinates;
+      restaurant.distance = calculateEuclideanDistance(
+        lat,
+        lon,
+        userLocation.lat,
+        userLocation.lon
+      );
+    }
+    restaurants.sort((a, b) => a.distance - b.distance);
+
+    const table = document.querySelector('table');
+
+    for (const restaurant of restaurants) {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${restaurant.name}
+      <td>${restaurant.address}</td>`;
+
+      table.appendChild(row);
+      console.log(restaurant.distance);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+displayRestaurants();
