@@ -1,0 +1,94 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15rem;
+}
+
+li {
+  border: 1px solid #000;
+  display: flex;
+  justify-content: flex-end;
+  line-height: 3rem;
+}
+
+label {
+  display: block;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+li button {
+  width: 2rem;
+  height: 3rem;
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+}
+
+li input {
+  position: absolute;
+  margin: 1rem 3rem;
+  cursor: pointer;
+}
+
+li input[type='checkbox']:checked + label {
+  background-color: rgb(146, 208, 136);
+  font-weight: bold;
+}
+
+.add-btn {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(80, 80, 168);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+}
+
+.modal form {
+  color: black;
+  background-color: whitesmoke;
+  margin: 5px auto;
+  border: 1px solid #252422;
+  width: 15%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  min-height: 300px;
+  height: auto;
+  border-radius: 1.625rem;
+}
+
+.modal form label {
+  padding: 1rem;
+}
+
+.modal form input {
+  padding: 0.2rem;
+}
+
+.modal form button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+}
