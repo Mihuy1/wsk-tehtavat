@@ -3,9 +3,8 @@
 ## Week 1
 
 validator screenshot:
-![screenshot](/Week1/validator.png)
-
+![Screenshot](Week%201/validator.png)
 html content screenshot:
-![screenshot](/Week1/viikko1html.png)
+![screenshot](/Week%201/viikko1html.png)
 
 [users.metropolia link](https://users.metropolia.fi/~patrikhy/wskTehtavat/Viikko1/)
