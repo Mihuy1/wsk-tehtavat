@@ -11,13 +11,13 @@ const restaurantModal = document.querySelector('.restaurant-modal');
 const restaurantModalContent = document.querySelector('.restaurant-modal-content');
 const restaurantTable = document.getElementById('restaurant-table');
 
-const apiUrl = 'https://api.example.com/restaurants';
-const menuUrl = 'https://10.120.32.94/restaurant/api/v1/daily/:id/en';
 const allRestaurants = 'https://10.120.32.94/restaurant/api/v1/restaurants/'
 
-function displayRestaurantDetails(restaurant) {
+async function displayRestaurantDetails(restaurant) {
   restaurantModal.style.display = 'block';
-  restaurantModalContent.innerHTML = `
+  // Clear the modal content
+  restaurantModalContent.innerHTML = '';
+  restaurantModalContent.innerHTML += `
     <h2>${restaurant.name}</h2>
     <p>Address: ${restaurant.address}</p>
     <p>Postal Code: ${restaurant.postalCode}</p>
@@ -26,12 +26,6 @@ function displayRestaurantDetails(restaurant) {
     <p>Company: ${restaurant.company}</p>
   `;
 }
-
-function displayMenu(menu) {
-  const menuItems = menu.map(item => `<p>${item.name}: ${item.price}</p>`).join('');
-  restaurantModalContent.innerHTML += `<h3>Menu:</h3>${menuItems}`;
-}
-
 
 async function fetchData(url) {
   try {
@@ -46,13 +40,53 @@ async function fetchData(url) {
   }
 }
 
-async function handleRestaurantClick(restaurantId) {
-  try {
-    const menuResponse = await fetchData(`${menuUrl}${restaurantId}/en`);
-    displayMenu(menuResponse.courses);
-  } catch (error) {
-    console.error('Error fetching menu:', error.message);
+async function getWeeklyMenu(restaurantId) {
+  const menuUrl = `https://10.120.32.94/restaurant/api/v1/restaurants/weekly/${restaurantId}/en`;
+  fetch(menuUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      displayWeeklyMenu(data);
+    })
+    .catch(error => console.error('Error fetching weekly menu:', error.message));
+}
+
+async function displayWeeklyMenu(menu) {
+  const restaurantModal = document.querySelector('.restaurant-modal');
+  const modalContent = document.querySelector('.restaurant-modal-content');
+  restaurantModal.style.display = 'block';
+
+  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  // Split the date into an array
+  const dateArray = menu.days[0].date.split(',');
+
+  // Get the day of the week
+  const date = new Date();
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const day = date.getDay();
+
+  const currentDayOfWeek = daysOfWeek[date.getDay()];
+
+  for (let t of menu.days) {
+    const dateArray = t.date.split(',');
+    // Check if the dateArray contains the current day of the week
+    if (dateArray[0] === currentDayOfWeek) {
+      // Log the courses for the current day of the week
+      modalContent.innerHTML += `
+      <h2>${currentDayOfWeek}</h2>
+    `;
+      for(let course of t.courses) {
+        modalContent.innerHTML += `
+          <p>${course.name}</p>
+          <p><b>${course.price}</b></p>
+        `;
+      }
+    }
+
   }
+
+
 }
 
 fetchData(allRestaurants)
@@ -67,7 +101,7 @@ fetchData(allRestaurants)
     `;
     row.addEventListener('click', () => {
       displayRestaurantDetails(restaurant);
-      handleRestaurantClick(restaurant.id);
+      getWeeklyMenu(restaurant._id);
       row.classList.add('highlight');
     });
     restaurantTable.appendChild(row);

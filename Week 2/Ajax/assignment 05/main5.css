@@ -60,26 +60,27 @@ td {
   color: black;
   margin: 5px auto;
   border: 1px solid #252422;
-  width: 15%;
+  width: 45%;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  max-height: 90vh; /* or any other value that suits your needs */
+  overflow-y: auto;
   min-height: 300px;
   height: auto;
   border-radius: 1.625rem;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 }
 
 .restaurant-modal-content h2 {
-  font-size: 2em;
+  font-size: 16px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .restaurant-modal-content p {
-  font-size: 1em;
-  margin-bottom: 10px;
+  font-size: 12px;
+  margin-bottom: 5px;
 }
