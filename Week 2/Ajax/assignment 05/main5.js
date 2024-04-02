@@ -16,8 +16,10 @@ const allRestaurants = 'https://10.120.32.94/restaurant/api/v1/restaurants/'
 async function displayRestaurantDetails(restaurant) {
   restaurantModal.style.display = 'block';
   // Clear the modal content
-  restaurantModalContent.innerHTML = '';
-  restaurantModalContent.innerHTML += `
+  const restaurantDetails = document.querySelector('.restaurant-details');
+  restaurantDetails.innerHTML = '';
+  // Display the restaurant details
+  restaurantDetails.innerHTML = `
     <h2>${restaurant.name}</h2>
     <p>Address: ${restaurant.address}</p>
     <p>Postal Code: ${restaurant.postalCode}</p>
@@ -54,6 +56,8 @@ async function getWeeklyMenu(restaurantId) {
 async function displayWeeklyMenu(menu) {
   const restaurantModal = document.querySelector('.restaurant-modal');
   const modalContent = document.querySelector('.restaurant-modal-content');
+  const menuDetails = document.querySelector('.menu-details');
+  menuDetails.innerHTML = '';
   restaurantModal.style.display = 'block';
 
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -73,11 +77,11 @@ async function displayWeeklyMenu(menu) {
     // Check if the dateArray contains the current day of the week
     if (dateArray[0] === currentDayOfWeek) {
       // Log the courses for the current day of the week
-      modalContent.innerHTML += `
-      <h2>${currentDayOfWeek}</h2>
-    `;
+      menuDetails.innerHTML += `
+        <h2>${currentDayOfWeek}</h2>
+      `;
       for(let course of t.courses) {
-        modalContent.innerHTML += `
+        menuDetails.innerHTML += `
           <p>${course.name}</p>
           <p><b>${course.price}</b></p>
         `;

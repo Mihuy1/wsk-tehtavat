@@ -65,8 +65,7 @@ td {
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-height: 90vh; /* or any other value that suits your needs */
-  overflow-y: auto;
+  max-height: 100vh; /* or any other value that suits your needs */
   min-height: 300px;
   height: auto;
   border-radius: 1.625rem;
@@ -83,4 +82,9 @@ td {
 .restaurant-modal-content p {
   font-size: 12px;
   margin-bottom: 5px;
+}
+
+.restaurant-details,
+.menu-details {
+  max-height: 50vh; /* Adjust this value as needed */
 }
