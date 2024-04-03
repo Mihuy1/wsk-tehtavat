@@ -60,19 +60,15 @@ td {
   color: black;
   margin: 5px auto;
   border: 1px solid #252422;
+  overflow: auto;
   width: 45%;
-  justify-content: center;
-  align-items: center;
   display: flex;
   flex-direction: column;
-  max-height: 100vh; /* or any other value that suits your needs */
+  max-height: 90vh;
   min-height: 300px;
-  height: auto;
   border-radius: 1.625rem;
-  padding: 10px;
   text-align: center;
 }
-
 .restaurant-modal-content h2 {
   font-size: 16px;
   font-weight: bold;
