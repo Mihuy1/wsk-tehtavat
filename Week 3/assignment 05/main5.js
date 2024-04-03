@@ -1,7 +1,15 @@
-// your code here
+'use strict';
+const restaurantNameh2 = document.createElement('h2');
+const restaurantAddress = document.createElement('p');
+const restaurantPostalCode = document.createElement('p');
+const restaurantCity = document.createElement('p');
+const restaurantPhone = document.createElement('p');
+const restaurantCompany = document.createElement('p');
 
 const restaurantModal = document.querySelector('.restaurant-modal');
-
+const restaurantModalContent = document.querySelector(
+  '.restaurant-modal-content'
+);
 const restaurantTable = document.getElementById('restaurant-table');
 
 const allRestaurants = 'https://10.120.32.94/restaurant/api/v1/restaurants/';
@@ -50,9 +58,23 @@ async function getWeeklyMenu(restaurantId) {
 
 async function displayWeeklyMenu(menu) {
   const restaurantModal = document.querySelector('.restaurant-modal');
+  const modalContent = document.querySelector('.restaurant-modal-content');
   const menuDetails = document.querySelector('.menu-details');
   menuDetails.innerHTML = '';
   restaurantModal.style.display = 'block';
+
+  const weekDays = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+
+  // Split the date into an array
+  const dateArray = menu.days[0].date.split(',');
 
   // Get the day of the week
   const date = new Date();
@@ -65,10 +87,11 @@ async function displayWeeklyMenu(menu) {
     'Friday',
     'Saturday',
   ];
+  const day = date.getDay();
 
   const currentDayOfWeek = daysOfWeek[date.getDay()];
 
-  for (const t of menu.days) {
+  for (let t of menu.days) {
     const dateArray = t.date.split(',');
     // Check if the dateArray contains the current day of the week
     if (dateArray[0] === currentDayOfWeek) {
@@ -76,7 +99,7 @@ async function displayWeeklyMenu(menu) {
       menuDetails.innerHTML += `
         <h2>${currentDayOfWeek}</h2>
       `;
-      for (const course of t.courses) {
+      for (let course of t.courses) {
         menuDetails.innerHTML += `
           <p>${course.name}</p>
           <p><b>${course.price}</b></p>
