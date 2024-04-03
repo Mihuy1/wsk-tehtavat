@@ -1,0 +1,90 @@
+body {
+  background-color: #f0f0f0;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  background-color: #252422;
+  color: white;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+}
+
+th {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  font-weight: normal;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+td {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5em 1em;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.row:hover {
+  cursor: pointer;
+}
+
+.restaurant-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.restaurant-modal-content {
+  background-color: whitesmoke;
+  color: black;
+  margin: 5px auto;
+  border: 1px solid #252422;
+  width: 45%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh; /* or any other value that suits your needs */
+  min-height: 300px;
+  height: auto;
+  border-radius: 1.625rem;
+  padding: 10px;
+  text-align: center;
+}
+
+.restaurant-modal-content h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.restaurant-modal-content p {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.restaurant-details,
+.menu-details {
+  max-height: 50vh; /* Adjust this value as needed */
+}
