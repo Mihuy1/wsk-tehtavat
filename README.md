@@ -12,3 +12,7 @@ html content screenshot:
 ## Week 2
 
 [users.metropolia link](https://users.metropolia.fi/~patrikhy/wskTehtavat/Viikko2/)
+
+## Week 3
+
+[users.metropolia link](https://users.metropolia.fi/~patrikhy/wskTehtavat/Viikko3/)
